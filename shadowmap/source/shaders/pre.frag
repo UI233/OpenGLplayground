@@ -14,5 +14,7 @@ void main()
 {
     pos = model_pos;
     color = texture(tex, model_tex);
+    if(color.xyz == vec3(0.0))
+        color = vec4(1.0);
     normal = normalize(model_normal);
 }

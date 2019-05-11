@@ -29,3 +29,20 @@ Following is the steps needed to render the scene with shadows.
 - Need to partition the view frustum adaptively
 - Above introduces to shimmering artifacts
 
+## Scene
+PCF kernel size: 7 x 7
+
+Resolution of Shadow Map(4 level CSM): 2048 * 2048, 1536 * 1536, 1024 * 1024, 512 * 512
+
+
+
+![far](https://github.com/UI233/OpenGLplayground/tree/master/shadowmap/img/far.png)
+
+
+
+![closerlook](https://github.com/UI233/OpenGLplayground/tree/master/shadowmap/img/closerlook.png)
+
+
+
+
+

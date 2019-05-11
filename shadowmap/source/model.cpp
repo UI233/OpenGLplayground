@@ -172,7 +172,7 @@ void Scene::processMesh(aiMesh *mesh, aiScene *scene)
             indices.push_back(face.mIndices[j]);
     }
     
-    models.push_back(Model(std::move(pos), std::move(normal), std::move(tex), std::move(indices), "texture" + std::to_string(models.size()) + ".png"));
+    models.push_back(Model(std::move(pos), std::move(normal), std::move(tex), std::move(indices), "texture" + std::to_string(models.size()) + ".jpg"));
 }
 
 void Scene::append(std::string directory)

@@ -12,8 +12,9 @@ uniform vec3 light_dir;
 uniform vec3 vpos;
 
 layout(location = 0) out vec4 fcolor;
-const float interval[4] = {0.913876f, 0.97694, 0.99750, 1.0f};
-const float bias_set[4] = {0.015, 0.0075,  0.0039, 0.0026};
+const float interval[4] = {0.990710020f, 0.996007917f, 0.999000371f, 1.0f};
+const float bias_set[4] = {0.0048f, 0.0033f,  0.009f, 0.009f};
+int t;
 float calculateShadow(vec4 pos)
 {
     float d = pos.w;
@@ -28,16 +29,16 @@ float calculateShadow(vec4 pos)
     vec2 shadow_map_sz = textureSize(depth[i], 0);
     float factor = 0.0f;
     vec3 frag_normal = texture(normalmap, tex).xyz;
-    float bias = max((1.0f - dot(light_dir, frag_normal)) * bias_set[i] , bias_set[i] / 5.0f);
+    float bias = max((1.0f - dot(light_dir, frag_normal)) * bias_set[i] , bias_set[i] / 4.0f);
 
-    for(int x = -1; x <= 1; x++)
-        for(int y = -1; y <= 1; y++)
+    for(int x = -3; x <= 3; x++)
+        for(int y = -3; y <= 3; y++)
         {
             vec2 offset = vec2(x, y) / shadow_map_sz;
             float light_depth = texture(depth[i], light_tex + offset).r;
             factor += light_depth < frag_depth - bias ? 1.0f : 0.0f;
         }
-    return factor / 9.0f;
+    return factor / 49.0f;
 }
 
 vec4 gamma(vec4 color)
@@ -58,6 +59,7 @@ void main()
     vec3 o = normalize((vpos - rpos.xyz));
     vec3 h = normalize(i + o);
     fcolor = texture(color, tex);
+    //fcolor = vec4(1.0f);
     float m = 0.2;
     float limit = 0.0000001f;
     float dhn = max(dot(h,normal), limit), din = max(dot(i, normal), limit), doh = max(dot(o, h), limit), don = max(dot(o ,normal), limit); 

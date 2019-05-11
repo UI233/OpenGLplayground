@@ -117,7 +117,7 @@ vec3 Camera::getPos() const
 
 std::array<vec3, 8> Camera::getFrustum(const unsigned int &idx) const
 {
-    static float interval[5]{0.0f, 0.1f, 0.30f, 0.8f, 1.0f};
+    static float interval[5]{0.0f, 0.3f, 0.50f, 0.8f, 1.0f};
     std::array<vec3, 8> cube {
         vec3(1.0f, 1.0f, 1.0f),
         vec3(1.0f, 1.0f, -1.0f),
@@ -132,8 +132,8 @@ std::array<vec3, 8> Camera::getFrustum(const unsigned int &idx) const
     float far_plane = nearv + (farv - nearv) * interval[idx];
     float near_plane = nearv + (farv - nearv) * interval[idx - 1];
     mat4 inv = inverse(perspective(3.1415926f / 2.0f, (float)width / (float)height, near_plane, far_plane) * getLookat());
-    //vec4 d = per * vec4(0.0f, 0.0f, -far_plane, 1.0f);
-    //float depth = d.z / d.w;
+    vec4 d = per * vec4(0.0f, 0.0f, -far_plane, 1.0f);
+    float depth = d.z / d.w;
     for (auto &d : cube)
     {
         vec4 temp = inv * vec4(d, 1.0f);

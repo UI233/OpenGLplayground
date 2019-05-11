@@ -28,8 +28,8 @@ Quaternion operator * (Quaternion a, Quaternion b);
 class Camera
 {
 public:
-    Camera(float height = 720, float width = 1280, float far = 30.0f, float near = 0.1f);
-    Camera(const vec3 &a, const vec3 &f, const vec3 &p, float height = 720, float width = 1280, float far = 30.0f, float near = 0.1f);
+    Camera(float height = 720, float width = 1280, float far = 50.0f, float near = 0.1f);
+    Camera(const vec3 &a, const vec3 &f, const vec3 &p, float height = 720, float width = 1280, float far = 50.0f, float near = 0.1f);
     ~Camera() = default;
     mat4 getViewMatrix() const;//get the world to view transformation matrix
     mat4 getLookat() const;
