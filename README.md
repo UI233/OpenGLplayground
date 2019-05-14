@@ -2,7 +2,7 @@
 
 ## Description
 
-This is my toy project. I would like to implement some algorithms related to rendering in game dev such as shadowmapping, SSAO and etc using *OpenGL*. 
+This is my toy project. I would like to implement some algorithms related to rendering in game dev such as shadowmapping, SSAO and etc.  using *OpenGL*. 
 
 ## Dependency 
 
@@ -13,8 +13,8 @@ This is my toy project. I would like to implement some algorithms related to ren
 - Assimp
 - stb_image
 
-All projects in this repository is compiled using MSVC so I am not sure that it works well on g++.
+All projects in this repository are compiled using MSVC so I am not sure whether it works well on g++.
 
-## List of Implementation
+## Table of Contents
 
 - Shadow Mapping
